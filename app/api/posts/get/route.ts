@@ -3,6 +3,10 @@ import { db } from "@/lib/turso";
 import { posts, users } from "@/db/schema";
 import { eq } from "drizzle-orm";
 
+export const config = {
+    runtime: 'edge',
+};
+
 export async function GET(req: NextRequest) {
     const { searchParams } = new URL(req.url);
     const pageParam = searchParams.get("page");
