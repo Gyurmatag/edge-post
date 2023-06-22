@@ -2,9 +2,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import { db } from "@/lib/turso";
 import { posts, users } from "@/db/schema";
 
-export const config = {
-    runtime: 'edge',
-};
+export const runtime = 'edge'
 
 export async function POST(req: NextRequest) {
     const { name, text } = await req.json()
