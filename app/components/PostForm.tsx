@@ -1,7 +1,7 @@
 'use client'
 
-import {addPost} from "@/app/actions";
 import { useRouter } from 'next/navigation'
+import { addPost } from "@/app/actions";
 
 export default function PostForm() {
 

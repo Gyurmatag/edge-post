@@ -12,7 +12,7 @@ export default async function PostList() {
     const items = await getPosts()
 
     return (
-        <div className="space-y-4">
+        <div className="w-full max-w-xs md:max-w-md lg:max-w-lg mx-auto space-y-4">
             {items.map((postData: any, index: number) => (
                 <PostItem key={index} authorName={postData.users.name} postText={postData.posts.text}/>
             ))}

@@ -1,7 +1,7 @@
 import {NextRequest, NextResponse} from 'next/server'
 import { db } from "@/lib/turso";
 import { posts, users } from "@/db/schema";
-import { eq } from "drizzle-orm";
+import {eq, sql} from "drizzle-orm";
 
 export const runtime = 'edge'
 
@@ -14,7 +14,7 @@ export async function GET(req: NextRequest) {
 
     const offset = (page - 1) * limit;
 
-    const fetchedPosts = await db.select().from(posts).innerJoin(users, eq(users.id, posts.userId)).limit(limit).offset(offset).all();
+    const fetchedPosts = await db.select().from(posts).innerJoin(users, eq(users.id, posts.userId)).limit(limit).offset(offset).orderBy(sql`${posts.createdAt} desc nulls first`).all();
 
     return NextResponse.json(fetchedPosts)
 }
