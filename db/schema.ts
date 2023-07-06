@@ -8,7 +8,7 @@ export const users = sqliteTable("users", {
 
 export const posts = sqliteTable("posts", {
   id: integer("id").primaryKey(),
-  text: text("text").notNull(),
+  text: text("text", { length: 256 }).notNull(),
   createdAt: integer("created_at", { mode: "timestamp" }).default(
     sql`CURRENT_TIMESTAMP`
   ),
