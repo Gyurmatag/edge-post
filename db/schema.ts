@@ -9,9 +9,7 @@ export const users = sqliteTable("users", {
 export const posts = sqliteTable("posts", {
   id: integer("id").primaryKey(),
   text: text("text", { length: 256 }).notNull(),
-  createdAt: integer("created_at", { mode: "timestamp" }).default(
-    sql`CURRENT_TIMESTAMP`
-  ),
+  createdAt: text("created_at").default(sql`CURRENT_DATE`),
   userId: integer("user_id")
     .notNull()
     .references(() => users.id),
