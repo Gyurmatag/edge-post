@@ -8,10 +8,9 @@ const PostForm = dynamic(() => import("@/app/components/PostForm"), {
 export const runtime = "edge";
 
 const getPosts = async () => {
-  const response = await fetch(
-    `${process.env.NEXT_PUBLIC_APP_URL}/api/posts/get`,
-    { cache: "no-store" },
-  );
+  const response = await fetch(`${process.env.NEXT_PUBLIC_APP_URL}/api/posts`, {
+    cache: "no-store",
+  });
   return response.json();
 };
 

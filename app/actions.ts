@@ -3,7 +3,7 @@
 export async function addPost(formData: FormData) {
   const formDataObject = Object.fromEntries(formData.entries());
 
-  await fetch(`${process.env.NEXT_PUBLIC_APP_URL}/api/posts/add`, {
+  await fetch(`${process.env.NEXT_PUBLIC_APP_URL}/api/posts`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
