@@ -1,11 +1,16 @@
-import PostForm from "@/app/components/PostForm";
+import dynamic from "next/dynamic";
 import PostList from "@/app/components/PostList";
+
+const PostForm = dynamic(() => import("@/app/components/PostForm"), {
+  ssr: false,
+});
 
 export const runtime = "edge";
 
 const getPosts = async () => {
   const response = await fetch(
-    `${process.env.NEXT_PUBLIC_APP_URL}/api/posts/get`
+    `${process.env.NEXT_PUBLIC_APP_URL}/api/posts/get`,
+    { cache: "no-store" },
   );
   return response.json();
 };
